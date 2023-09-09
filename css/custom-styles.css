@@ -1,0 +1,88 @@
+.navbar-dark .navbar-nav,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color:hsl(39, 100%, 52%);
+}
+  .card.custom-card {
+    transition: transform 0.3s ease-in-out;
+  }
+  .card.custom-card:hover {
+    transform: scale(1.05);
+    border-color: hsl(178,99%,31%) !important;
+  }
+  .navbar {
+   background-color: hsla(32, 80%, 17%, 0.815);
+
+  }
+  
+  
+  footer a.btn {
+    border-radius: 20px;
+    background-color:#3f2910a8;
+    padding: 5px 10px;
+  }
+  
+  footer a.btn:hover {
+    color: hsl(0, 0%, 0%);
+    background-color: #3f2910a8;
+  }
+
+.rounded-circle {
+    border:2px solid white;
+}
+.btn {
+    background-color: hsla(32, 74%, 30%, 0.815)!important;
+    margin-right: 10px;
+    outline: none;
+    
+  }
+  
+  .btn-group-toggle .btn {
+    margin-right: 10px; 
+  }
+.card a  {
+  border: 2px solid #fff;
+ 
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  transition: .3s;
+  display: flex;
+  overflow: hidden;
+}
+@keyframes changShadow {
+  0% {
+      box-shadow: 0 0 20px hsla(36, 100%, 47%, 0)
+  }
+  25% {
+      box-shadow: 0 0 20px hsl(36, 100%, 47%)
+  }
+  50% {
+      box-shadow: 0 0 20px hsl(178,99%,31%);
+  }
+  75% {
+      box-shadow: 0 0 20px hsl(36, 100%, 47%)
+  }
+  100% {
+      box-shadow: 0 0 20px hsla(36, 100%, 47%, 0)
+  }
+} .card a:hover{
+  
+  box-shadow: 0 0 60px hsl(36,100%,47%);
+  animation: changShadow  5s 3 ;
+}
+.hover {
+  border: 2px solid #fff;
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  transition: .3s;
+  display: flex;
+  overflow: hidden;
+}
+ .hover:hover{
+  
+  box-shadow: 0 0 60px hsl(36,100%,47%);
+  animation: changShadow  5s 3 ;
+}
+.coloredshap {
+  background-image: url(../img/Colored\ Shapes.svg);
+  background-size: none;
+}
