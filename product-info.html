@@ -12,6 +12,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/custom-styles.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
+  
 </head>
 
 <body>
@@ -58,12 +59,55 @@
   </nav>
 
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h1 id="product-title">Título del Producto</h1>
-<img id="product-image" src="" alt="Imagen del Producto">
-<p id="product-description">Descripción del Producto</p>
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <img id="product-image" src="" alt="Imagen del Producto" class="rounded float-start">
+            
+            <div class="card-body">
+              <h1 id="product-title" class="card-title"></h1>
+              <p id="product-description" class="card-text"></p>
+              <p id="product-cost" class="card-text"></p>
+              <p id="product-soldCount" class="card-text"></p>
+              <p id="product-category" class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">Imágenes adicionales</h3>
+              <div id="product-images" class="card-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="comments-container"></div>
+      <div id="comments-container">
+       
+
+        
+        <h3>Agregar un comentario</h3>
+        <form id="comment-form">
+          <div class="form-group">
+            <label for="comment">Comentario:</label>
+            <textarea class="form-control" id="comment" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="rating">Puntuación:</label>
+            <input type="number" class="form-control" id="rating" min="1" max="5" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar comentario</button>
+        </form>
+      </div>
+      
+
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Productos relacionados</h3>
+          <div id="related-products" class="row"></div>
+        </div>
       </div>
     </div>
   </main>
