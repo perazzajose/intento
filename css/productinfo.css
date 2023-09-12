@@ -1,0 +1,37 @@
+.slide {
+    position: relative;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+    margin-top: 26px;
+}
+
+.slide-open:checked + .slide-item {
+    position: static;
+    opacity: 100;
+}
+.slide-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+.slide-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.imageCarousel {
+    width: 750px;
+    height: 700px;
+    margin: 0 auto; /* Para centrar horizontalmente */
+    border: 1px solid #ccc; /* Agrega un borde */
+}
+
+.productTitle {
+    background-color: orange;
+height: 100% !important;
+    
+}
+
+
+

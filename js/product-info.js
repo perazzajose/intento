@@ -1,10 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
+console.log(productId);
 
 if (productId) {
   const productDetailsUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
+  console.log(productDetailsUrl);
   const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
-  function cargarComentarios(product) {
+  function cargarComentarios (product) {
     fetch(productCommentsUrl)
       .then(response => response.json())
       .then(comments => {
@@ -21,11 +23,10 @@ if (productId) {
           const dateElement = document.createElement('div');
           dateElement.textContent = `Fecha: ${comment.dateTime}`;
 
-         
           commentDiv.appendChild(scoreElement);
           commentDiv.appendChild(userElement);
           commentDiv.appendChild(dateElement);
-          commentDiv.appendChild(document.createElement('hr')); 
+          commentDiv.appendChild(document.createElement('hr'));
 
           commentsContainer.appendChild(commentDiv);
         });
@@ -39,28 +40,42 @@ if (productId) {
     .then(response => response.json())
     .then(product => {
       const titleElement = document.getElementById('product-title');
-      const imageElement = document.getElementById('product-image');
       const descriptionElement = document.getElementById('product-description');
       const costElement = document.getElementById('product-cost');
-      const currencyElement = document.getElementById('product-currency');
       const soldCountElement = document.getElementById('product-soldCount');
       const categoryElement = document.getElementById('product-category');
-      const imagesContainer = document.getElementById('product-images');
       const relatedProductsContainer = document.getElementById('related-products');
-
       titleElement.textContent = product.name;
-      imageElement.src = product.images[0];
       descriptionElement.textContent = product.description;
       costElement.textContent = `Precio: ${product.cost} ${product.currency}`;
       soldCountElement.textContent = `Vendidos: ${product.soldCount}`;
       categoryElement.textContent = `Categoría: ${product.category}`;
-      product.images.forEach(imageUrl => {
+
+      const carouselInner = document.querySelector('#imageCarousel .carousel-inner');
+
+      // Limpia el carrusel actual
+      carouselInner.innerHTML = '';
+
+      // Agrega las imágenes al carrusel y la imagen principal
+      product.images.forEach((imageUrl, index) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.classList.add('carousel-item');
+        if (index === 0) {
+          slideDiv.classList.add('active'); // La primera imagen se establece como activa
+        }
+
         const image = document.createElement('img');
         image.src = imageUrl;
-        imagesContainer.appendChild(image);
+        image.alt = 'Imagen de producto';
+        image.classList.add('d-block', 'w-100'); // Estilos de Bootstrap
+
+        slideDiv.appendChild(image);
+        carouselInner.appendChild(slideDiv);
       });
+
       product.relatedProducts.forEach(relatedProduct => {
         const relatedProductElement = document.createElement('div');
+        relatedProductElement.classList.add("col-md-6");
         relatedProductElement.innerHTML = `
           <h3>${relatedProduct.name}</h3>
           <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
@@ -68,37 +83,30 @@ if (productId) {
         relatedProductsContainer.appendChild(relatedProductElement);
       });
       cargarComentarios(product);
+
+      // ...
     })
     .catch(error => {
       console.error('Error al obtener detalles del producto:', error);
     });
+
 } else {
   console.error('ID de producto no válido.');
 }
 
-
-
-
-
-
-
-
-//comentarios
+// Comentarios
 const commentForm = document.getElementById('comment-form');
 commentForm.addEventListener('submit', function (e) {
-  e.preventDefault(); 
+  e.preventDefault();
   const commentText = document.getElementById('comment').value;
   const rating = document.getElementById('rating').value;
 
-  
   if (rating < 1 || rating > 5) {
     alert('La puntuación debe estar entre 1 y 5.');
     return;
   }
 
-  
   const currentUser = localStorage.getItem('currentUser');
-
   const currentDateTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 
   const commentsContainer = document.getElementById('comments-container');

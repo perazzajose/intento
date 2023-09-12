@@ -131,11 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-function seleccionarProducto(productID) {
+function seleccionarProducto (productID) {
     localStorage.setItem('productoSeleccionado', productID);
     window.location.href = 'product-info.html';
     console.log('ID del producto seleccionado:', productID);
-  }
-  
+}
 
-  
+
