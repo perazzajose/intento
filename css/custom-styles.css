@@ -1,6 +1,6 @@
 .navbar-dark .navbar-nav,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color:hsl(39, 100%, 52%);
+  color:hsl(177, 76%, 26%);
 }
   .card.custom-card {
     transition: transform 0.3s ease-in-out;
@@ -10,7 +10,7 @@
     border-color: hsl(178,99%,31%) !important;
   }
   .navbar {
-   background-color: hsla(32, 80%, 17%, 0.815);
+   background-color: hsla(39, 91%, 48%, 0.815);
 
   }
   
@@ -27,12 +27,13 @@
   }
 
 .rounded-circle {
-    border:2px solid white;
+    border:2px solid rgb(236, 234, 230);
 }
 .btn {
-    background-color: hsla(32, 74%, 30%, 0.815)!important;
+    background-color:hsl(39, 95%, 50%)!important;
     margin-right: 10px;
     outline: none;
+    border-radius: 48px 0;
     
   }
   
@@ -68,6 +69,9 @@
   
   box-shadow: 0 0 60px hsl(36,100%,47%);
   animation: changShadow  5s 3 ;
+  transform: scale(1.1);
+  transition: transform 0.7s;
+ 
 }
 .hover {
   border: 2px solid #fff;
@@ -78,14 +82,16 @@
   overflow: hidden;
 }
  .hover:hover{
-  
   box-shadow: 0 0 60px hsl(36,100%,47%);
   animation: changShadow  5s 3 ;
+  transform: scale(1.1);
+  transition: transform 0.7s;
 }
 .coloredshap {
   background-image: url(../img/Colored\ Shapes.svg);
   background-size: none;
 }
+
 
 
 
