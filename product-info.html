@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/productinfo.css">
   <link href="css/custom-styles.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
   
@@ -59,37 +60,39 @@
   </nav>
 
   <main>
+    <div class="text-center p-4">
+      <h3 class="productTitle">PRODUCTO</h3>
+    </div>
     <div class="container my-5">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="card mb-4">
-            <img id="product-image" src="" alt="Imagen del Producto" class="rounded float-start">
-            
-            <div class="card-body">
-              <h1 id="product-title" class="card-title"></h1>
-              <p id="product-description" class="card-text"></p>
-              <p id="product-cost" class="card-text"></p>
-              <p id="product-soldCount" class="card-text"></p>
-              <p id="product-category" class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h3 class="card-title">Imágenes adicionales</h3>
-              <div id="product-images" class="card-text"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="comments-container"></div>
-      <div id="comments-container">
-       
+              <div id="imageCarousel" class="carousel  imageCarousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <!-- Aquí se agregarán las imágenes del producto -->
+                </div>
 
-        
+                <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+                <div class="card-body">
+                  <h1 id="product-title" class="card-title"></h1>
+                  <p id="product-description" class="card-text"></p>
+                  <p id="product-cost" class="card-text"></p>
+                  <p id="product-soldCount" class="card-text"></p>
+                  <p id="product-category" class="card-text"></p>
+                </div>
+              </div>
+
+            </div>
+            </div>
+     
         <h3>Agregar un comentario</h3>
-        <form id="comment-form">
+        <form id="comment-form" col-md-6 mx-auto>
           <div class="form-group">
             <label for="comment">Comentario:</label>
             <textarea class="form-control" id="comment" rows="4" required></textarea>
@@ -100,9 +103,8 @@
           </div>
           <button type="submit" class="btn btn-primary">Enviar comentario</button>
         </form>
-      </div>
       
-
+      <div id="comments-container"></div>
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Productos relacionados</h3>
