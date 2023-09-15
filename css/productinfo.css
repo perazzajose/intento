@@ -21,17 +21,98 @@
 }
 
 .imageCarousel {
-    width: 750px;
-    height: 700px;
+  width: 750px;
+  height: 700px;
     margin: 0 auto; /* Para centrar horizontalmente */
-    border: 1px solid #ccc; /* Agrega un borde */
+    border: 1px solid #747474; /* Agrega un borde */
+    background-color: white;
 }
 
 .productTitle {
-    background-color: orange;
+    background-color: #f39407;
 height: 100% !important;
     
 }
 
+#comment-form{
+ margin: 3rem;
+}
+
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+  }
+  
+  #form p {
+    text-align: center;
+  }
+  
+  #form label {
+    font-size: 20px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+  }
+  
+  .clasificacion {
+    text-align: center;
+  }
+  .clasificacion input[type="radio"] {
+    display: none;
+  }
+  .clasificacion label {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s;
+    margin: 0 10px;
+  }
+  .clasificacion input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+  
 
 
+  .pintada span  {
+    text-align: center;
+  }
+ 
+  .pintada span  {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+    margin: 0 10px;
+  }
+ 
+  .pintada span {
+    color: orange; /* Color para estrellas pintadas */
+  }
+  .comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .comment p {
+    margin: 5px 0;
+  }
+  .carouselFlechas {
+  background-color: orange;
+  }
+
+  .form-control {
+    width: 60%;
+  }
+  .comentarios {
+    padding-left: 50px;
+    margin-bottom: -15px;
+  }
+  .card-product {
+    margin-bottom: 20%;
+  }
