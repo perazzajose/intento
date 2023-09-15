@@ -6,29 +6,34 @@ if (productId) {
   const productDetailsUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
   console.log(productDetailsUrl);
   const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+
   function cargarComentarios (product) {
     fetch(productCommentsUrl)
       .then(response => response.json())
       .then(comments => {
         const commentsContainer = document.getElementById('comments-container');
         comments.forEach(comment => {
+          const score = comment.score;
+          console.log(score);
           const commentDiv = document.createElement('div');
           commentDiv.classList.add('comment');
           const scoreElement = document.createElement('div');
-          scoreElement.textContent = `Puntuación: ${comment.score} estrellas`;
-
-          const userElement = document.createElement('div');
-          userElement.textContent = `Usuario: ${comment.user}`;
-
-          const dateElement = document.createElement('div');
-          dateElement.textContent = `Fecha: ${comment.dateTime}`;
-
+          scoreElement.innerHTML = `${comment.user} - ${comment.dateTime} - <span>${getStarIcons(score)}</span> `;
+          scoreElement.classList.add('pintada');
+          const commentText = document.createElement('div');
+          commentText.textContent = `${comment.description}`;
           commentDiv.appendChild(scoreElement);
-          commentDiv.appendChild(userElement);
-          commentDiv.appendChild(dateElement);
+          commentDiv.appendChild(commentText);
           commentDiv.appendChild(document.createElement('hr'));
 
           commentsContainer.appendChild(commentDiv);
+          function getStarIcons (rating) {
+            let stars = '';
+            for (let i = 0; i < rating; i++) {
+              stars += '★';
+            }
+            return stars;
+          }
         });
       })
       .catch(error => {
@@ -99,7 +104,7 @@ const commentForm = document.getElementById('comment-form');
 commentForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const commentText = document.getElementById('comment').value;
-  const rating = document.getElementById('rating').value;
+  const rating = document.querySelector('input[name="rating"]:checked').value;
 
   if (rating < 1 || rating > 5) {
     alert('La puntuación debe estar entre 1 y 5.');
@@ -107,27 +112,29 @@ commentForm.addEventListener('submit', function (e) {
   }
 
   const currentUser = localStorage.getItem('currentUser');
-  const currentDateTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+  const currentDateTime = new Date().toLocaleString().replace(/\//g, '-');
 
   const commentsContainer = document.getElementById('comments-container');
   const commentDiv = document.createElement('div');
   commentDiv.classList.add('comment');
   const scoreElement = document.createElement('div');
-  scoreElement.textContent = `Puntuación: ${rating} estrellas`;
-  const userElement = document.createElement('div');
-  userElement.textContent = `Usuario: ${currentUser}`;
-  const dateElement = document.createElement('div');
-  dateElement.textContent = `Fecha: ${currentDateTime}`;
+  scoreElement.innerHTML = `${currentUser} - ${currentDateTime} - <span>${getStarIcons(rating)}</span>`; // Usamos getStarIcons para mostrar las estrellas
+  scoreElement.classList.add('pintada');
   const commentTextElement = document.createElement('div');
-  commentTextElement.textContent = `Comentario: ${commentText}`;
+  commentTextElement.textContent = `${commentText}`;
   commentDiv.appendChild(scoreElement);
-  commentDiv.appendChild(userElement);
-  commentDiv.appendChild(dateElement);
   commentDiv.appendChild(commentTextElement);
   commentDiv.appendChild(document.createElement('hr'));
   commentsContainer.appendChild(commentDiv);
   document.getElementById('comment').value = '';
-  document.getElementById('rating').value = '';
+  document.querySelector('input[name="rating"]:checked').checked = false;
+  function getStarIcons (rating) {
+    let stars = '';
+    for (let i = 0; i < rating; i++) {
+      stars += '★';
+    }
+    return stars;
+  }
 
   alert('Comentario agregado con éxito. (Este mensaje es solo para demostración, no se envía al servidor)');
 });
