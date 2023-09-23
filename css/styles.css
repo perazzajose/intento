@@ -39,7 +39,10 @@ nav a {
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
+
+  
 }
+
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -191,4 +194,33 @@ a.custom-card:hover {
 
 .dropdown-menu-wide {
   width: 300px; /* Ajusta el ancho según tu preferencia */
+}
+
+
+/* DARKMODE */
+
+body.dark{
+  background-color:rgb(164, 160, 153);
+  color: #000000;
+  
+}
+body.dark nav {
+  background-color:#484749 !important ;
+}
+
+body.dark .jumbotron{
+  background-image: url(../img/cover_back_black.svg);
+}
+body.dark .darkk {
+  background-color: rgb(164, 160, 153)!important;
+}
+body.dark .custom-card {
+  background-color: #ffffff75!important;
+}
+body.dark button {
+  background-color: lightcoral!important;
+}
+body.dark .btn {
+  background-color: hsl(178,99%,31%)!important;
+  border: #484749;
 }

@@ -1,11 +1,16 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
-console.log(productId);
+
 
 if (productId) {
+  localStorage.setItem('selectedProductId', productId);
+
   const productDetailsUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
-  console.log(productDetailsUrl);
   const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+
+
+  //Belen
+
 
   function cargarComentarios (product) {
     fetch(productCommentsUrl)
@@ -14,7 +19,6 @@ if (productId) {
         const commentsContainer = document.getElementById('comments-container');
         comments.forEach(comment => {
           const score = comment.score;
-          console.log(score);
           const commentDiv = document.createElement('div');
           commentDiv.classList.add('comment');
           const scoreElement = document.createElement('div');
@@ -41,6 +45,10 @@ if (productId) {
       });
   }
 
+
+  //Camila
+
+
   fetch(productDetailsUrl)
     .then(response => response.json())
     .then(product => {
@@ -55,6 +63,10 @@ if (productId) {
       costElement.textContent = `Precio: ${product.cost} ${product.currency}`;
       soldCountElement.textContent = `Vendidos: ${product.soldCount}`;
       categoryElement.textContent = `Categoría: ${product.category}`;
+
+
+      //Jose
+
 
       const carouselInner = document.querySelector('#imageCarousel .carousel-inner');
 
@@ -72,19 +84,30 @@ if (productId) {
         const image = document.createElement('img');
         image.src = imageUrl;
         image.alt = 'Imagen de producto';
-        image.classList.add('d-block', 'w-100'); // Estilos de Bootstrap
+
 
         slideDiv.appendChild(image);
         carouselInner.appendChild(slideDiv);
       });
 
+
+      // Nahuel M
+
+
       product.relatedProducts.forEach(relatedProduct => {
         const relatedProductElement = document.createElement('div');
         relatedProductElement.classList.add("col-md-6");
+        relatedProductElement.classList.add("Recommended-Product");
         relatedProductElement.innerHTML = `
           <h3>${relatedProduct.name}</h3>
           <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
         `;
+
+        // Agrega el evento click para redirigir al usuario al producto
+        relatedProductElement.addEventListener('click', () => {
+          window.location.href = `product-info.html?id=${relatedProduct.id}`; // Reemplaza 'product.html' con la URL de tu página de detalles del producto
+        });
+
         relatedProductsContainer.appendChild(relatedProductElement);
       });
       cargarComentarios(product);
@@ -99,7 +122,11 @@ if (productId) {
   console.error('ID de producto no válido.');
 }
 
-// Comentarios
+
+// Martin Rodriguez
+
+
+
 const commentForm = document.getElementById('comment-form');
 commentForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -110,6 +137,11 @@ commentForm.addEventListener('submit', function (e) {
     alert('La puntuación debe estar entre 1 y 5.');
     return;
   }
+
+
+  // Nacho Ignacio Juan
+
+
 
   const currentUser = localStorage.getItem('currentUser');
   const currentDateTime = new Date().toLocaleString().replace(/\//g, '-');
@@ -135,6 +167,7 @@ commentForm.addEventListener('submit', function (e) {
     }
     return stars;
   }
-
-  alert('Comentario agregado con éxito. (Este mensaje es solo para demostración, no se envía al servidor)');
 });
+
+//Nahuel A
+
